@@ -3,6 +3,7 @@ import styled from "styled-components";
 import { OrbitControls } from "@react-three/drei";
 import { Canvas } from "@react-three/fiber";
 import Cube from "./Cube";
+import lineImage from '../img/line.png';
 
 const Section = styled.div`
   height: 100vh;
@@ -28,8 +29,8 @@ const Left = styled.div`
 `;
 
 const Title = styled.h1`
-  font-size: 74px;
-
+  font-size: 70px;
+  color: #008080;
   @media only screen and (max-width: 768px) {
     font-size: 60px;
   }
@@ -64,23 +65,12 @@ const Subtitle = styled.h2`
 
 const Desc = styled.p`
   font-size: 24px;
-  color: lightgray;
+  color: #808000;
 `;
 
-const Button = styled.button`
-  background-color: #da4ea2;
-  color: white;
-  font-weight: 500;
-  width: 120px;
-  padding: 10px;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-`;
-
-const About = () => {
+const About = ({ id }) => {
   return (
-    <Section>
+    <Section id={id} >
       <Container>
         <Left>
           <Canvas camera={{ position: [5, 5, 5], fov: 25 }}>
@@ -95,7 +85,7 @@ const About = () => {
         <Right>
           <Title> Journey </Title>
           <WhatWeDo>
-            <Line src="./img/line.png" />
+          <Line src={lineImage} alt="Line" /> 
             <Subtitle>What am I?</Subtitle>
           </WhatWeDo>
           <Desc>

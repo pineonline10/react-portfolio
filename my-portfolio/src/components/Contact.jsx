@@ -1,66 +1,54 @@
-import React, { useRef, useState } from 'react';
-import emailjs from '@emailjs/browser';
+import React from 'react';
 import styled from 'styled-components';
 import { FaGithub, FaDiscord, FaEnvelope } from 'react-icons/fa';
-
-// ... styled components definitions
+import { Canvas } from '@react-three/fiber';
+import Atom from './Atom';
+import { Suspense } from 'react';
+import { OrbitControls } from "@react-three/drei";
+const Section = styled.section`
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  scroll-snap-align: start;
+`;
 
 const IconsContainer = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 20px; // Adjust the gap as needed
+  gap: 20px;
 `;
 
-const Contact = () => {
-  const formRef = useRef();
-  const [success, setSuccess] = useState(null);
+const IconLink = styled.a`
+  color: inherit;
+  transition: transform 0.3s ease;
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
+  &:hover {
+    transform: translateY(-5px);
+  }
+`;
 
-    emailjs
-      .sendForm('service_id', 'template_id', formRef.current, 'public_key')
-      .then(
-        (result) => {
-          console.log(result.text);
-          setSuccess(true);
-        },
-        (error) => {
-          console.log(error.text);
-          setSuccess(false);
-        }
-      );
-  };
-
+const Contact = ({ id }) => {
   return (
-    <Section>
-      <Container>
-        <Left>
-          <Form ref={formRef} onSubmit={handleSubmit}>
-            <Title>Contact</Title>
-            <Input placeholder="Name" name="name" />
-            <Input placeholder="Email" name="email" />
-            <TextArea placeholder="Write your message" name="message" rows={10} />
-            <Button type="submit">Send</Button>
-            {success === true && <p>Your message has been sent. We'll get back to you soon :)</p>}
-            {success === false && <p>There was an error sending your message. Please try again.</p>}
-          </Form>
-        </Left>
-        <Right>
-          <IconsContainer>
-            <a href="https://github.com/pineonline10" target="_blank" rel="noopener noreferrer">
-              <FaGithub size={50} /> {/* Adjust size as needed */}
-            </a>
-            <a href="mailto:joshisstillpine@gmail.com">
-              <FaEnvelope size={50} /> {/* Adjust size as needed */}
-            </a>
-            <a href="https://discordapp.com/users/grosidox#9408" target="_blank" rel="noopener noreferrer">
-              <FaDiscord size={50} /> {/* Adjust size as needed */}
-            </a>
-          </IconsContainer>
-        </Right>
-      </Container>
+    <Section id={id} >
+      <Canvas camera={{ position: [0, 0, 10] }}>
+        <Suspense fallback={null}>
+      <Atom />
+      <OrbitControls enableZoom={false} autoRotate />
+      </Suspense>
+      </Canvas>
+      <IconsContainer>
+        <IconLink href="https://github.com/pineonline10" target="_blank" rel="noopener noreferrer">
+          <FaGithub size={50} />
+        </IconLink>
+        <IconLink href="mailto:joshisstillpine@gmail.com">
+          <FaEnvelope size={50} />
+        </IconLink>
+        <IconLink href="https://discordapp.com/users/grosidox#9408" target="_blank" rel="noopener noreferrer">
+          <FaDiscord size={50} />
+        </IconLink>
+      </IconsContainer>
     </Section>
   );
 };

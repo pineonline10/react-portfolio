@@ -3,6 +3,7 @@ import Contact from "./components/Contact";
 import Header from "./components/Header";
 import About from "./components/About";
 import Works from "./components/Works";
+import backgroundImage from './img/bg.jpeg';
 
 const Container = styled.div`
   height: 100vh;
@@ -11,7 +12,7 @@ const Container = styled.div`
   overflow-y: auto;
   scrollbar-width: none;
   color: white;
-  background: url("./img/bg.jpeg");
+  background: url(${backgroundImage}); 
   &::-webkit-scrollbar{
     display: none;
   }
@@ -20,10 +21,10 @@ const Container = styled.div`
 function App() {
   return (
     <Container>
-      <Header />
-      <About />
-      <Works />
-      <Contact />
+      <Header id="home"/>
+      <About id="about" />
+      <Works id="works" />
+      <Contact id="contact" />
     </Container>
   );
 }

@@ -3,6 +3,8 @@ import styled from "styled-components";
 import Navbar from "./Navbar";
 import { Canvas } from "@react-three/fiber";
 import { OrbitControls, Sphere, MeshDistortMaterial } from "@react-three/drei";
+import moonImage from '../img/moon.jpg';
+import lineImage from '../img/line.png';
 
 const Section = styled.div`
   height: 100vh;
@@ -46,8 +48,8 @@ const Left = styled.div`
 `;
 
 const Title = styled.h1`
-  font-size: 74px;
-
+  font-size: 70px;
+  color: #008080;
   @media only screen and (max-width: 768px) {
     text-align: center;
   }
@@ -69,22 +71,11 @@ const Subtitle = styled.h2`
 
 const Desc = styled.p`
   font-size: 24px;
-  color: lightgray;
+  color: #808000;
   @media only screen and (max-width: 768px) {
     padding: 20px;
     text-align: center;
   }
-`;
-
-const Button = styled.button`
-  background-color: #da4ea2;
-  color: white;
-  font-weight: 500;
-  width: 100px;
-  padding: 10px;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
 `;
 
 const Right = styled.div`
@@ -97,8 +88,8 @@ const Right = styled.div`
 `;
 
 const Img = styled.img`
-  width: 800px;
-  height: 600px;
+  width: 600px;
+  height: 300px;
   object-fit: contain;
   position: absolute;
   top: 0;
@@ -120,15 +111,15 @@ const Img = styled.img`
   }
 `;
 
-const Header = () => {
+const Header = ({ id }) => {
   return (
-    <Section>
+    <Section id={id} >
       <Navbar />
       <Container>
         <Left>
           <Title>Joshua Fernandez</Title>
           <WhatWeDo>
-            <Line src="./img/line.png" />
+            <Line src={lineImage} alt="Line" />
             <Subtitle>Who am I?</Subtitle>
           </WhatWeDo>
           <Desc>
@@ -143,7 +134,7 @@ const Header = () => {
               <directionalLight position={[3, 2, 1]} />
               <Sphere args={[1, 100, 200]} scale={2.4}>
                 <MeshDistortMaterial
-                  color="#3d1c56"
+                  color="#008080"
                   attach="material"
                   distort={0.5}
                   speed={2}
@@ -151,7 +142,7 @@ const Header = () => {
               </Sphere>
             </Suspense>
           </Canvas>
-          <Img src="./img/moon.jpg" />
+          <Img src={moonImage} alt="Moon" />
         </Right>
       </Container>
     </Section>

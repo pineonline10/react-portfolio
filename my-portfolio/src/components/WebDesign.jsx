@@ -2,13 +2,23 @@ import { OrbitControls, Stage } from "@react-three/drei";
 import { Canvas } from "@react-three/fiber";
 import React, { Suspense } from "react";
 import styled from "styled-components";
+import workImage from '../img/w_logo.png';
+
+const ImageLink = styled.a`
+  display: block;
+  cursor: pointer;
+`;
+
+const WorkImage = styled.img`
+  max-width: 100%;
+  height: auto;
+  display: block;
+`;
 
 const Desc = styled.div`
   width: 200px;
   height: 70px;
   padding: 20px;
-  background-color: white;
-  border-radius: 10px;
   position: absolute;
   top: 100px;
   right: 100px;
@@ -23,6 +33,8 @@ const Desc = styled.div`
 `;
 
 const WebDesign = () => {
+  const workLink = "https://github.com/hr7n/movie-night-planner/tree/main";
+
   return (
     <>
       <Canvas>
@@ -33,9 +45,11 @@ const WebDesign = () => {
         </Suspense>
       </Canvas>
       <Desc>
-        We design products with a strong focus on both world class design and
-        ensuring your product is a market success.
+      <ImageLink href={workLink} target="_blank" rel="noopener noreferrer">
+        <WorkImage src={workImage} alt="Web Design Work" />
+      </ImageLink>
       </Desc>
+     
     </>
   );
 };

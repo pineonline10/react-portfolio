@@ -1,6 +1,18 @@
 import React from "react";
 import styled from "styled-components";
 
+const ListItem = styled.li`
+  a {
+    color: #008080; 
+    text-decoration: none;
+    cursor: pointer;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+`;
+
 const Section = styled.div`
   display: flex;
   justify-content: center;
@@ -43,10 +55,6 @@ const List = styled.ul`
   }
 `;
 
-const ListItem = styled.li`
-  cursor: pointer;
-`;
-
 const Icons = styled.div`
   display: flex;
   align-items: center;
@@ -58,31 +66,21 @@ const Icon = styled.img`
   cursor: pointer;
 `;
 
-const Button = styled.button`
-  width: 100px;
-  padding: 10px;
-  background-color: #da4ea2;
-  color: white;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-`;
-
-const Navbar = () => {
-  return (
-    <Section>
-      <Container>
-        <Links>
-          <List>
-            <ListItem>Home</ListItem>
-            <ListItem>Studio</ListItem>
-            <ListItem>Works</ListItem>
-            <ListItem>Contact</ListItem>
-          </List>
-        </Links>
-      </Container>
-    </Section>
-  );
-};
+  const Navbar = () => {
+    return (
+      <Section>
+        <Container>
+          <Links>
+            <List>
+              <ListItem><a href="#header">Home</a></ListItem>
+              <ListItem><a href="#about">About</a></ListItem>
+              <ListItem><a href="#works">Works</a></ListItem>
+              <ListItem><a href="#contact">Contact</a></ListItem>
+            </List>
+          </Links>
+        </Container>
+      </Section>
+    );
+  };
 
 export default Navbar;

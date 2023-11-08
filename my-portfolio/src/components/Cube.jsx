@@ -28,7 +28,7 @@
 import React from 'react';
 import { useLoader } from '@react-three/fiber';
 import { TextureLoader } from 'three';
-import imagePath from '../../public/img/IMG_0364.jpg'; // Adjust the path according to where you move the image
+import imagePath from '../img/IMG_0364.jpg'; // Adjust the path according to where you move the image
 
 const Cube = () => {
   // Load the image as a texture

@@ -57,12 +57,12 @@ const ListItem = styled.li`
   font-weight: bold;
   cursor: pointer;
   color: transparent;
-  -webkit-text-stroke: 1px white;
+  -webkit-text-stroke: 1px #008080;
   position: relative;
 
   @media only screen and (max-width: 768px) {
     font-size: 24px;
-    color: white;
+    color: #008080;
     -webkit-text-stroke: 0px;
   }
 
@@ -94,10 +94,10 @@ const Right = styled.div`
   flex: 1;
 `;
 
-const Works = () => {
-  const [work, setWork] = useState("Web Design");
+const Works = ({ id }) => {
+  const [work, setWork] = useState("null");
   return (
-    <Section>
+    <Section id={id} >
       <Container>
         <Left>
           <List>
@@ -109,7 +109,7 @@ const Works = () => {
           </List>
         </Left>
         <Right>
-          {work === "Whichflix?" ? (
+          {work === "Web Design" ? (
             <WebDesign />
           ) : work === "Art" ? (
             <Art />

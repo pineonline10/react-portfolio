@@ -2,27 +2,36 @@ import { OrbitControls, Stage } from "@react-three/drei";
 import { Canvas } from "@react-three/fiber";
 import React, { Suspense } from "react";
 import styled from "styled-components";
+import storeImage from '../img/kvnga-vBWsG91aR_U-unsplash.jpg';
+
+const StoreLink = styled.a`
+  display: block;
+  cursor: pointer;
+`;
+
+const StoreImage = styled.img`
+  max-width: 100%;
+  height: auto;
+  display: block;
+`;
 
 const Desc = styled.div`
   width: 200px;
   height: 70px;
   padding: 20px;
-  background-color: white;
-  border-radius: 10px;
   position: absolute;
-  top: 100px;
+  bottom: 200px;
   right: 100px;
 
   @media only screen and (max-width: 768px) {
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
+    position: static; // or adjust top, left, right, and bottom as needed
     margin: auto;
   }
 `;
 
+
 const ECommerce = () => {
+  const storeLink = "https://github.com/sentuhxd/GotchaGames";
   return (
     <>
       <Canvas>
@@ -33,8 +42,9 @@ const ECommerce = () => {
         </Suspense>
       </Canvas>
       <Desc>
-        We design products with a strong focus on both world class design and
-        ensuring your product is a market success.
+        <StoreLink href={storeLink} target="_blank" rel="noopener noreferrer">
+          <StoreImage src={storeImage} alt="E-Commerce Store" />
+        </StoreLink>
       </Desc>
     </>
   );
